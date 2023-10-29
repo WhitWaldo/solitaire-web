@@ -1,0 +1,208 @@
+﻿@using SolitareWeb.Data
+
+@{
+    var symbol = GetSymbol();
+    var faceValue = GetFaceCharacter();
+    var cardColor = GetSuitColor();
+
+    <div class="flex justify-center items-center">
+        <div class="relative @(IsFaceUp ? "bg-white" : "pattern-hive") px-4 py-6 shadow-xl ring-1 ring-gray-200 sm:max-w-lg sm:rounded-lg sm:px-30 w-80 m-6">
+            <div class="py-20 px-12">
+                @if (IsFaceUp)
+                {
+                    <div class="rounded-lg flex justify-center items-center">
+                        <div class="@(IsRedSuitColor() ? "text-red-500": "text-black-500") text-6xl absolute top-0 left-0 mt-4 ml-4 items-center">
+                            <div>
+                                @faceValue
+                            </div>
+                            <div>
+                                @symbol
+                            </div>
+                        </div>
+                        <div class="@(IsRedSuitColor() ? "text-red-500" : "text-black-500")">
+                            @switch (Card.FaceValue)
+                            {
+                                case 0: //Ace
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-7xl row-start-1 col-start-1 justify-self-center text-white">@symbol</div>
+                                        <div class="text-9xl row-start-2 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-7xl row-start-3 col-start-3 justify-self-center text-white">@symbol</div>
+                                    </div>
+                                    break;
+                                case 1: // 2
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center text-white">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-2 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 2: // 3
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-2 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 3: // 4
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center text-white">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-3 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 4: // 5
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-3 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 5: // 6
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-3 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 6: // 7
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-3 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 7: // 8
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-3 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 8: // 9
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="text-8xl row-start-1 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-2 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-3 col-start-3 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 9: // 10
+                                    <div class="grid grid-cols-3 gap-1">
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">10</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 10: // jack
+                                    <div class="grid grid-cols-3 gap-1">
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">J</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 11: // queen
+                                    <div class="grid grid-cols-3 gap-1">
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">Q</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                                case 12: // king
+                                    <div class="grid grid-cols-3 gap-1">
+                                        <div class="text-8xl row-start-1 col-start-3 justify-self-center">@symbol</div>
+                                        <div class="text-8xl row-start-2 col-start-2 justify-self-center">K</div>
+                                        <div class="text-8xl row-start-3 col-start-1 justify-self-center">@symbol</div>
+                                    </div>
+                                    break;
+                            }
+                        </div>
+                        <div class="text-@cardColor text-6xl absolute bottom-0 right-0 mb-4 mr-4 rotate-180 items-center">
+                            <div>
+                                @faceValue
+                            </div>
+                            <div>
+                                @symbol
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code 
+{
+    [Parameter]
+    public Card Card { get; set; }
+
+    [Parameter]
+    public bool IsFaceUp { get; set; }
+
+    private const string RedColor = "red-500";
+    private const string BlackColor = "black-500";
+    private const string DiamondCharacter = "\u2666";
+    private const string ClubCharacter = "\u2663";
+    private const string SpadeCharacter = "\u2660";
+    private const string HeartCharacter = "\u2665";
+
+    /// <summary>
+    /// Gets the color of the card based on the suit.
+    /// </summary>
+    /// <returns></returns>
+    private string GetSuitColor() => Card.Suit is Suit.Club or Suit.Spade ? BlackColor : RedColor;
+
+    /// <summary>
+    /// Determines if the suit is a red color or not (black).
+    /// </summary>
+    /// <returns></returns>
+    private bool IsRedSuitColor() => Card.Suit is Suit.Diamond or Suit.Heart;
+
+    /// <summary>
+    /// Get the face value to write on the card.
+    /// </summary>
+    /// <returns></returns>
+    private string GetFaceCharacter() => Card.FaceValue switch
+    {
+        0 => "A",
+        >= 1 and <= 9 => Card.FaceValue.ToString(),
+        10 => "J",
+        11 => "Q",
+        12 => "K",
+        _ => string.Empty
+        };
+
+    /// <summary>
+    /// Gets the symbol used on the card.
+    /// </summary>
+    /// <returns></returns>
+    private string GetSymbol() => Card.Suit switch
+    {
+        Suit.Club => ClubCharacter,
+        Suit.Spade => SpadeCharacter,
+        Suit.Diamond => DiamondCharacter,
+        Suit.Heart => HeartCharacter,
+        _ => throw new ArgumentOutOfRangeException()
+    };
+}

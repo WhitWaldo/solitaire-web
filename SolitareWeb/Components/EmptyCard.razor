@@ -1,0 +1,39 @@
+﻿@using SolitareWeb.Data
+
+@{
+    var suitCharacter = DisplayedSuit();
+
+    <div class="relative bg-gray-200 px-4 py-6 shadow-xl ring-1 ring-gray-200 sm:max-w-lg sm:rounded-lg sm:px-30 w-80 m-6">
+        <div class="py-20 px-12">
+            <div class="rounded-lg flex justify-center items-center">
+                <div class="text-gray-400">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-7xl row-start-1 col-start-1 justify-self-center text-gray-200">@suitCharacter</div>
+                        <div class="text-9xl row-start-2 col-start-2 justify-self-center text-gray-500">@suitCharacter</div>
+                        <div class="text-7xl row-start-3 col-start-3 justify-self-center text-gray-200">@suitCharacter</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code 
+{
+    [Parameter]
+    public Suit CardSuit { get; set; }
+
+    private const string DiamondCharacter = "\u2666";
+    private const string ClubCharacter = "\u2663";
+    private const string SpadeCharacter = "\u2660";
+    private const string HeartCharacter = "\u2665";
+
+    public string DisplayedSuit() => CardSuit switch
+    {
+        Suit.Diamond => DiamondCharacter,
+        Suit.Heart => HeartCharacter,
+        Suit.Club => ClubCharacter,
+        Suit.Spade => SpadeCharacter,
+        _ => throw new ArgumentOutOfRangeException()
+        };
+}

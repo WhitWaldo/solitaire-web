@@ -1,0 +1,33 @@
+﻿@page "/"
+@using SolitareWeb.Services
+@using SolitareWeb.Data
+@inject GameService GameSvc
+
+<PageTitle>Solitare</PageTitle>
+
+
+<div class="">
+    <button @onclick="@StartNewGame" type="button" class="rounded bg-teal-500 text-white px-2 py-1 text-sm-center font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">New Game</button>
+</div>
+<div class="grid grid-cols-9 gap-4">
+    <div class="row-start-1 col-start-1">
+        <EmptyCard CardSuit="Suit.Club" />
+    </div>
+    <div class="row-start-1 col-start-2">
+        <EmptyCard CardSuit="Suit.Spade" />
+    </div>
+    <div class="row-start-1 col-start-3">
+        <EmptyCard CardSuit="Suit.Diamond" />
+    </div>
+    <div class="row-start-1 col-start-4">
+        <EmptyCard CardSuit="Suit.Heart" />
+    </div>
+</div>
+
+@code
+{
+    private void StartNewGame()
+    {
+        GameSvc.StartNewGame();
+    }
+}
